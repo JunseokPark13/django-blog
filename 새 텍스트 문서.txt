@@ -1,0 +1,3 @@
+C:\Users\Bandit\djangoworks>myvenv/Scripts/activate
+
+python manage.py runserver 

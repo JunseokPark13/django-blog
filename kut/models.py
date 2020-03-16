@@ -1,19 +1,17 @@
 from django.conf import settings
 from django.db import models
-from django.utils import timezone
 
 # Create your models here.
-class Post(models.Model):
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    title = models.CharField(max_length=200)
-    text = models.TextField()
-    created_date = models.DateTimeField(
-            default=timezone.now)
-    published_date = models.DateTimeField(
-            blank=True, null=True)
+class Problem(models.Model):
+    prob_id = models.IntegerField(null=False)
+    title = models.CharField(max_length=256)
+    body_desc = models.TextField()
+    input_desc = models.TextField()
+    output_desc = models.TextField()
+    time_limit = models.IntegerField(default=1)
+    memory_limit = models.IntegerField(default=128)
 
     def publish(self):
-        self.published_date = timezone.now()
         self.save()
 
     def __str__(self):
